@@ -176,6 +176,7 @@ struct ContentView: View {
                 Spacer()
             }
             
+            
             if isShowingView {
                 Group {
                     ZStack {

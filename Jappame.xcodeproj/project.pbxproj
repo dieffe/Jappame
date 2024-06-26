@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -229,7 +229,7 @@
 				};
 			};
 			buildConfigurationList = EFE9277A2C19DB1A009333C9 /* Build configuration list for PBXProject "Jappame" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -448,7 +448,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_ASSET_PATHS = "\"Jappame/Preview Content\"";
 				DEVELOPMENT_TEAM = 2FV6HP6BVQ;
 				ENABLE_PREVIEWS = YES;
@@ -482,7 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_ASSET_PATHS = "\"Jappame/Preview Content\"";
 				DEVELOPMENT_TEAM = 2FV6HP6BVQ;
 				ENABLE_PREVIEWS = YES;
