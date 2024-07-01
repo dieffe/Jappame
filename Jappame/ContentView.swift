@@ -333,22 +333,5 @@ struct ContentView: View {
         print(answers)
     }
 
-}
-
-
-#Preview {
-    var myModels: [MyModel] = [
-        MyModel(id: "1", name: "Vowels", notify: true, score:0),
-        MyModel(id: "2", name: "K-series", notify: false, score:0),
-        MyModel(id: "3", name: "S-series", notify: false, score:0),
-        MyModel(id: "4", name: "T-series", notify: false, score:0),
-        MyModel(id: "5", name: "N-series", notify: false, score:0),
-        MyModel(id: "6", name: "H-series", notify: false, score:0),
-        MyModel(id: "7", name: "M-series", notify: false, score:0),
-        MyModel(id: "8", name: "Y-series", notify: false, score:0),
-        MyModel(id: "9", name: "R-series", notify: false, score:0),
-        MyModel(id: "10", name: "W-series", notify: false, score:0),
-        MyModel(id: "11", name: "Singular", notify: false, score:0)
-    ]
-    ContentView(series: myModels)
+    
 }
