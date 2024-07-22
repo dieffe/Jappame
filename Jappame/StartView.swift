@@ -8,7 +8,7 @@
 import SwiftUI
 
 //create an array with the values: Vowels, K-series, S-series, T-series, N-series, H-series, M-series, Y-series, R-series, W-series, Singular
-let categories = ["Vowels", "K-series", "S-series", "T-series", "N-series", "H-series", "M-series", "Y-series", "R-series", "W-series", "Singular"]
+let categories = ["Vowels", "K-series", "S-series", "T-series", "N-series", "H-series", "M-series", "Y-series", "R-series", "W-series", "Singular","G-series","Z-series","D-series","B-series","P-series"]
 
 struct MyModel {
     var id: String
@@ -57,6 +57,7 @@ struct StartView: View {
     let defaults = UserDefaults.standard
 
     @State var myModels: [MyModel] = [
+        MyModel(id: "spacer", name: "Basic series", notify: false, score: 0),
         MyModel(id: "1", name: "Vowels", notify: true, score: 0),
         MyModel(id: "2", name: "K-series", notify: false, score: 0),
         MyModel(id: "3", name: "S-series", notify: false, score: 0),
@@ -67,7 +68,14 @@ struct StartView: View {
         MyModel(id: "8", name: "Y-series", notify: false, score: 0),
         MyModel(id: "9", name: "R-series", notify: false, score: 0),
         MyModel(id: "10", name: "W-series", notify: false, score: 0),
-        MyModel(id: "11", name: "Singular", notify: false, score: 0)
+        MyModel(id: "11", name: "Singular", notify: false, score: 0),
+        MyModel(id: "spacer", name: "Dakuon", notify: false, score: 0),
+        MyModel(id: "12", name: "G-series", notify: false, score: 0),
+        MyModel(id: "13", name: "Z-series", notify: false, score: 0),
+        MyModel(id: "14", name: "D-series", notify: false, score: 0),
+        MyModel(id: "15", name: "B-series", notify: false, score: 0),
+        MyModel(id: "16", name: "P-series", notify: false, score: 0)
+        
     ]
 
     
@@ -94,27 +102,32 @@ struct StartView: View {
         ScrollView {
             
             ForEach(0..<myModels.count) { i in
-                HStack {
-                    Toggle(isOn: self.$myModels[i].notify) {
-                        Text(titleRow(iter: i))
-                            .font(.system(size: 24, weight: .bold, design: .rounded))
-                            .foregroundColor(Color.blue.opacity(0.7)) // Light blue color
-                            .padding()
-                        //.background(Color.black.opacity(0.1)) // Light background to enhance visibility
-                            .cornerRadius(10)
-                            .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 5, y: 5)
+                
+                if(self.myModels[i].id=="spacer") {
+                    Text(titleRow(iter: i))
+                } else {
+                    HStack {
+                        Toggle(isOn: self.$myModels[i].notify) {
+                            Text(titleRow(iter: i))
+                                .font(.system(size: 24, weight: .bold, design: .rounded))
+                                .foregroundColor(Color.blue.opacity(0.7)) // Light blue color
+                                .padding()
+                            //.background(Color.black.opacity(0.1)) // Light background to enhance visibility
+                                .cornerRadius(10)
+                                .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 5, y: 5)
+                        }
+                        .toggleStyle(SymbolToggleStyle(systemImage: "dot.squareshape.fill", activeColor: .red))
+                        .padding(.trailing)
                     }
-                    .toggleStyle(SymbolToggleStyle(systemImage: "dot.squareshape.fill", activeColor: .red))
-                    .padding(.trailing)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    .padding([.leading, .trailing])
                 }
-                .background(Color.white)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                .padding([.leading, .trailing])
                 
             }
             
@@ -134,7 +147,11 @@ struct StartView: View {
     }
     
     func titleRow(iter: Int) -> String {
-        return "🏆"+String(self.myModels[iter].score)+"% "+self.myModels[iter].name
+        if(self.myModels[iter].id=="spacer") {
+            return self.myModels[iter].name
+        }   else {
+            return "🏆"+String(self.myModels[iter].score)+"% "+self.myModels[iter].name
+        }
     }
 }
 
