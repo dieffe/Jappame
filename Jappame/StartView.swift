@@ -54,6 +54,10 @@ struct SymbolToggleStyle: ToggleStyle {
 
 struct StartView: View {
     
+    @EnvironmentObject var sheetManager: SheetManager
+    
+    @State var detailSerie : MyModel = MyModel(id: "0", name: "0", notify: false, score: 0)
+    
     let defaults = UserDefaults.standard
 
     @State var myModels: [MyModel] = [
@@ -108,13 +112,30 @@ struct StartView: View {
                 } else {
                     HStack {
                         Toggle(isOn: self.$myModels[i].notify) {
+                            Button {
+                                self.detailSerie = self.myModels[i]
+                                withAnimation {
+                                    sheetManager.present()
+                                }
+                            } label: {
+                                Image(systemName: "info.circle")
+                                    .tint(Color.green)
+                                    .symbolVariant(.circle.fill)
+                                    .font(
+                                    .system(size: 20,
+                                                weight: .bold,
+                                                design: .rounded)
+                                    )
+                            }.padding()
+                            
                             Text(titleRow(iter: i))
-                                .font(.system(size: 24, weight: .bold, design: .rounded))
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .foregroundColor(Color.blue.opacity(0.7)) // Light blue color
-                                .padding()
+                          
                             //.background(Color.black.opacity(0.1)) // Light background to enhance visibility
                                 .cornerRadius(10)
                                 .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 5, y: 5)
+                           
                         }
                         .toggleStyle(SymbolToggleStyle(systemImage: "dot.squareshape.fill", activeColor: .red))
                         .padding(.trailing)
@@ -131,14 +152,32 @@ struct StartView: View {
                 
             }
             
+            //show the version and build within a Text
+            Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "") (\(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""))")
+                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .foregroundColor(Color.blue.opacity(0.7))
+                .frame(alignment: .center)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+            
         }.onAppear() {
             //cycle the mymodel array and retrieve the values from the user defaults based on the key as a string
             for i in 0..<myModels.count {
                 print(defaults.integer(forKey: "1"))
                 self.myModels[i].score = defaults.integer(forKey: myModels[i].id)
             }
-        }
-    
+        }.overlay(alignment: .bottom) {
+            if sheetManager.action.isPresented {
+                PopupView(serie: self.detailSerie){
+                    withAnimation {
+                        sheetManager.dismiss()
+                    }
+                }
+            }
+        }.ignoresSafeArea()
+        
+   
+        
         
     }
         
@@ -157,6 +196,7 @@ struct StartView: View {
 
 #Preview {
     StartView()
+        .environmentObject(SheetManager())
 }
 
 

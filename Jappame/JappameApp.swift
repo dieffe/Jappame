@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct JappameApp: App {
 
+    @StateObject var sheetManager = SheetManager()
     
     var body: some Scene {
         WindowGroup {
             StartView()
+                .environmentObject(sheetManager)
         }
     }
 }
