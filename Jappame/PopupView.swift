@@ -11,26 +11,27 @@ struct PopupView: View {
     
     let serie: MyModel
     
-    @State var serieToRender = ["-"]
+    @State var serieToRender = [""]
+    @State var shouldRender = false
     
     var didClose: () -> Void
     
     var body: some View {
-        HStack() {
-            ForEach(serieToRender, id: \.self) { item in
-                //create a view for each item with the hiraganaToRomaji[item] and the item une on top of another. The view should have light green border, rounded corners and a shadow
-                VStack {
-                    Text(item)
-                        .foregroundColor(.green)
-                        .font(.system(size: 30))
-                    Text(hiraganaToRomaji[item] ?? "-")
+        HStack {
+            if(self.shouldRender) {
+                ForEach(self.serieToRender, id: \.self) { item in
+                    VStack {
+                        Text(item)
+                            .foregroundColor(.green)
+                            .font(.system(size: 30))
+                        Text(hiraganaToRomaji[item] ?? "-")
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .transition(.move(edge: .bottom))
                 }
-                
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-
             }
         }
         .frame(maxWidth: .infinity)
@@ -43,10 +44,16 @@ struct PopupView: View {
             close
         }
         .onAppear {
-            self.serieToRender = []
-            let quale = Int(serie.id)!
-            self.serieToRender = chars[quale]!
+            withAnimation {
+                
+                self.serieToRender = []
+                let quale = Int(serie.id)!
+                self.serieToRender = chars[quale]!
+                print(self.serieToRender)
+                self.shouldRender = true
+            }
         }
+        .transition(.move(edge: .bottom))
     }
 }
 
@@ -82,7 +89,7 @@ private extension PopupView {
             Image(systemName: "xmark")
                 .symbolVariant(.circle.fill)
                 .font(
-                    .system(size: 25, weight: .bold, design: .rounded)
+                    .system(size: 30, weight: .bold, design: .rounded)
             )
                 .foregroundStyle(.gray.opacity(0.4))
                 .padding(8)
