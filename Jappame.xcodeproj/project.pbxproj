@@ -10,6 +10,7 @@
 		EF2D691F2C1BF4E200765FE3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D691E2C1BF4E200765FE3 /* StartView.swift */; };
 		EF53FF012C26B01E00748C4C /* si.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53FF002C26B01E00748C4C /* si.mp3 */; };
 		EF53FF022C26B01E00748C4C /* no.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53FEFF2C26B01E00748C4C /* no.mp3 */; };
+		EF75C9682C689EC4003CEB79 /* PopupViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75C9672C689EC4003CEB79 /* PopupViewModifier.swift */; };
 		EFE76AB22C64B3FE0049D263 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE76AB12C64B3FE0049D263 /* PopupView.swift */; };
 		EFE76AB42C64BDC30049D263 /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE76AB32C64BDC30049D263 /* SheetManager.swift */; };
 		EFE927832C19DB1A009333C9 /* JappameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE927822C19DB1A009333C9 /* JappameApp.swift */; };
@@ -43,6 +44,7 @@
 		EF2D691E2C1BF4E200765FE3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		EF53FEFF2C26B01E00748C4C /* no.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = no.mp3; sourceTree = "<group>"; };
 		EF53FF002C26B01E00748C4C /* si.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = si.mp3; sourceTree = "<group>"; };
+		EF75C9672C689EC4003CEB79 /* PopupViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModifier.swift; sourceTree = "<group>"; };
 		EFE76AB12C64B3FE0049D263 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		EFE76AB32C64BDC30049D263 /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		EFE9277F2C19DB1A009333C9 /* Jappame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jappame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 				EF2D691E2C1BF4E200765FE3 /* StartView.swift */,
 				EFE76AB12C64B3FE0049D263 /* PopupView.swift */,
 				EFE76AB32C64BDC30049D263 /* SheetManager.swift */,
+				EF75C9672C689EC4003CEB79 /* PopupViewModifier.swift */,
 			);
 			path = Jappame;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				EFE76AB22C64B3FE0049D263 /* PopupView.swift in Sources */,
 				EFE927852C19DB1A009333C9 /* ContentView.swift in Sources */,
 				EFE927832C19DB1A009333C9 /* JappameApp.swift in Sources */,
+				EF75C9682C689EC4003CEB79 /* PopupViewModifier.swift in Sources */,
 				EFE76AB42C64BDC30049D263 /* SheetManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Jappame/Preview Content\"";
 				DEVELOPMENT_TEAM = 2FV6HP6BVQ;
 				ENABLE_PREVIEWS = YES;
@@ -472,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11;
+				MARKETING_VERSION = 15;
 				PRODUCT_BUNDLE_IDENTIFIER = jappame.Jappame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -491,7 +495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Jappame/Preview Content\"";
 				DEVELOPMENT_TEAM = 2FV6HP6BVQ;
 				ENABLE_PREVIEWS = YES;
@@ -507,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11;
+				MARKETING_VERSION = 15;
 				PRODUCT_BUNDLE_IDENTIFIER = jappame.Jappame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

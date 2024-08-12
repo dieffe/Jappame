@@ -9,17 +9,17 @@ import SwiftUI
 
 struct PopupView: View {
     
-    let serie: MyModel
+    let config : SheetManager.Config
     
     @State var serieToRender = [""]
-    @State var shouldRender = false
+    @State var shouldRender = true
     
     var didClose: () -> Void
     
     var body: some View {
         HStack {
             if(self.shouldRender) {
-                ForEach(self.serieToRender, id: \.self) { item in
+                ForEach(config.series, id: \.self) { item in
                     VStack {
                         Text(item)
                             .foregroundColor(.green)
@@ -44,21 +44,20 @@ struct PopupView: View {
             close
         }
         .onAppear {
-            withAnimation {
-                
-                self.serieToRender = []
-                let quale = Int(serie.id)!
-                self.serieToRender = chars[quale]!
-                print(self.serieToRender)
-                self.shouldRender = true
-            }
+        //    withAnimation {
+        //        self.serieToRender = []
+        //        let quale = Int(config.series.id)!
+        //        self.serieToRender = chars[quale]!
+        //        self.shouldRender = true
+        //    }
+            print(config)
         }
         .transition(.move(edge: .bottom))
     }
 }
 
 #Preview {
-    PopupView(serie: MyModel(id: "0", name: "0", notify: false, score: 0)){}
+    PopupView(config: .init(series: ["あ"] )){}
         .background(.blue)
         .previewLayout(.sizeThatFits)
         .padding()
@@ -109,7 +108,7 @@ private extension PopupView {
     }
     
     var title: some View {
-        Text(serie.name)
+        Text(config.series[0])
             .padding()
     }
     

@@ -114,8 +114,10 @@ struct StartView: View {
                         Toggle(isOn: self.$myModels[i].notify) {
                             Button {
                                 self.detailSerie = self.myModels[i]
+                                let id_:Int = Int(self.myModels[i].id)!
+                                let chars_to_pass = chars[id_]
                                 withAnimation {
-                                    sheetManager.present()
+                                    sheetManager.present(with: .init(series: chars_to_pass! ))
                                 }
                             } label: {
                                 Image(systemName: "info.circle")
@@ -166,15 +168,8 @@ struct StartView: View {
                 print(defaults.integer(forKey: "1"))
                 self.myModels[i].score = defaults.integer(forKey: myModels[i].id)
             }
-        }.overlay(alignment: .bottom) {
-            if sheetManager.action.isPresented {
-                PopupView(serie: self.detailSerie){
-                    withAnimation {
-                        sheetManager.dismiss()
-                    }
-                }
-            }
-        }.ignoresSafeArea()
+        }
+        .popup(with: sheetManager)
         
    
         

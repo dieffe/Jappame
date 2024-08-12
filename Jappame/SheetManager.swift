@@ -8,29 +8,39 @@
 import Foundation
 
 final class SheetManager: ObservableObject {
+    
+    typealias Config  = Action.Info
+    
     enum Action {
+        
+        struct Info {
+            let series: [String]
+        }
+        
         case na
-        case present
+        case present(info: Info)
         case dismiss
     }
     
     @Published private(set) var action: Action = .na
     
-    func present () {
-        if(self.action == .present) {
-            self.dismiss()
-        } else {
-            self.action = .present
-        }
+    func present (with config: Config) {
+        //if(self.action == .present(_)) {
+        //    self.dismiss()
+        //} else {
+            self.action = .present(info: config)
+        //}
     }
     
     func dismiss() {
         self.action = .dismiss
     }
+    
 }
 
 extension SheetManager.Action  {
     var isPresented : Bool {
-        self == .present
+        guard case .present(_) = self else { return false }
+        return true
     }
 }
